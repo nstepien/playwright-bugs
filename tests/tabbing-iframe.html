@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabbing in iframe bug repro</title>
+  </head>
+  <body>
+    <iframe src="./tabbing.html"></iframe>
+    <script type="module">
+      window.addEventListener("focus", () => {
+        console.log("parent window focus");
+      });
+
+      window.addEventListener("blur", () => {
+        console.log("parent window blur");
+      });
+    </script>
+  </body>
+</html>

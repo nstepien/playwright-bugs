@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabbing bug repro</title>
+  </head>
+  <body>
+    <main>
+      <input placeholder="Input A" />
+      <input placeholder="Input B" />
+      <input placeholder="Input C" />
+    </main>
+    <script type="module">
+      window.addEventListener("focus", () => {
+        console.log("window focus");
+      });
+
+      window.addEventListener("blur", () => {
+        console.log("window blur");
+      });
+
+      document.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("focus", () => {
+          console.log(`${input.placeholder} focus`);
+        });
+        input.addEventListener("blur", () => {
+          console.log(`${input.placeholder} blur`);
+        });
+      });
+    </script>
+  </body>
+</html>
